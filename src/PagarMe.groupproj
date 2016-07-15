@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A5BD7B5E-BA52-4FCE-B743-8E8B8E001DCB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PagarMe\PagarMe.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PagarMe.Tests\PagarMeTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PagarMe">
+        <MSBuild Projects="PagarMe\PagarMe.dproj"/>
+    </Target>
+    <Target Name="PagarMe:Clean">
+        <MSBuild Projects="PagarMe\PagarMe.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PagarMe:Make">
+        <MSBuild Projects="PagarMe\PagarMe.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PagarMeTests">
+        <MSBuild Projects="PagarMe.Tests\PagarMeTests.dproj"/>
+    </Target>
+    <Target Name="PagarMeTests:Clean">
+        <MSBuild Projects="PagarMe.Tests\PagarMeTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PagarMeTests:Make">
+        <MSBuild Projects="PagarMe.Tests\PagarMeTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PagarMe;PagarMeTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PagarMe:Clean;PagarMeTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PagarMe:Make;PagarMeTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
