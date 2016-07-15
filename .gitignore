@@ -39,7 +39,7 @@
 *.dres
 *.rsm
 *.tds
-*.dcu
+# *.dcu Compiled RestClient Lib
 *.lib
 *.a
 *.o
